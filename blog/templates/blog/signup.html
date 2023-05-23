@@ -1,0 +1,26 @@
+<!-- templates/blog/signup.html -->
+{% extends 'blog/base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+  <h1 class="text-2xl font-bold mb-4 flex justify-center">Sign Up</h1>
+  <form method="POST" class="max-w-lg mx-auto">
+    {% csrf_token %}
+    <div class="mb-4">
+      <label for="id_username" class="block text-gray-700 font-bold mb-2">Username</label>
+      {{ form.username|attr:"class:border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" }}
+    </div>
+    
+    <div class="mb-4">
+      <label for="id_password1" class="block text-gray-700 font-bold mb-2">Password</label>
+      {{ form.password1|attr:"class:border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" }}
+    </div>
+    <div class="mb-4">
+      <label for="id_password2" class="block text-gray-700 font-bold mb-2">Confirm Password</label>
+      {{ form.password2|attr:"class:border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" }}
+    </div>
+    <div class="flex justify-center">
+      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Sign Up</button>
+    </div>
+  </form>
+{% endblock %}

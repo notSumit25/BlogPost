@@ -1,0 +1,23 @@
+<!-- templates/blog/login.html -->
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="flex justify-center items-center h-screen">
+    <div class="max-w-md w-full bg-white p-8 rounded shadow-md">
+        <h1 class="text-2xl font-bold mb-4">Login</h1>
+        <form class="my-2" method="POST">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="id_username" class="block text-gray-700 font-bold mb-2">Username</label>
+                <input type="text" name="username" id="id_username" class="border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label for="id_password" class="block text-gray-700 font-bold mb-2">Password</label>
+                <input type="password" name="password" id="id_password" class="border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Login</button>
+        </form>
+        <p class="mt-4 text-gray-600">Don't have an account? <a href="{% url 'signup' %}" class="text-blue-500 hover:underline">Sign Up</a></p>
+    </div>
+</div>
+{% endblock %}

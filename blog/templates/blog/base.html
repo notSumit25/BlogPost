@@ -1,0 +1,50 @@
+<!-- templates/blog/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <!-- Include Tailwind CSS styles -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <header class="bg-blue-500 py-4">
+        <div class="container px-8 w-100 flex flex-row justify-between">
+            <h1 class="text-white text-2xl font-bold"><a href="{% url 'home' %}">My Blog</a></h1>
+            <nav class="mt-4 flex-end">
+                {% if user.is_authenticated %}
+                <div class="flex flex-row">
+                    <div class="border-solid border-2 rounded pr-4 mr-2">
+                        <a href="{% url 'create_post' %}" class="text-white ml-4">Create a Post</a>
+                    </div>
+                    <div class="border-solid border-2 rounded pr-4">
+                        <a href="{% url 'logout' %}" class="text-white ml-4">Logout</a>
+                    </div>
+                </div>
+                {% else %}
+                <div class="flex flex-row">
+                    <div class="border-solid border-2 rounded pr-4 mr-2">
+                        <a href="{% url 'login' %}" class="text-white ml-4">Login</a>
+                    </div>
+                    <div class="border-solid border-2 rounded pr-4">
+                        <a href="{% url 'signup' %}" class="text-white ml-4">Sign Up</a>
+                    </div>
+                </div>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 py-8">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer class="bg-gray-200 py-4">
+        <div class="container mx-auto px-4">
+            <p class="text-center">© 2023 My Blog. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
